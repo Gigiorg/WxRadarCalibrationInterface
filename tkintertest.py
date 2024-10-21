@@ -4,6 +4,8 @@ import tkinter.ttk as ttk
 import datetime
 from tkinter import filedialog, Variable
 
+from PIL import Image, ImageTk
+
 import os
 import h5py
 import argparse
@@ -46,10 +48,25 @@ class RadarInterface():
 
 
         frm = Frame(self.master, padx=10, pady=10)
-        frm.pack()
+        frm_param = Frame(self.master, padx=10, pady=10)
 
         notebook.add(frm, text='Interfaz Principal')
+        notebook.add(frm_param, text='Parametros')
 
+        #canvas = Canvas(frm_param)
+        #canvas.pack(side=TOP, fill=BOTH, expand=True)
+
+        img = Image.open('123431.png')
+        img1 = PhotoImage('123431.png')
+        img2 = ImageTk.PhotoImage(img)
+
+        '''  
+        img = PhotoImage(file="bd-sophy.png")
+        canvas.create_image(5,5, image=img)
+        '''
+        img_label = Label(frm_param, image=img2)
+        img_label.pack()
+        #canvas.create_image(40, 20, image=img)
 
         frm1 = Frame(frm, padx=10, pady=10)
         frm1.grid(row=0, column=0, sticky='n')
